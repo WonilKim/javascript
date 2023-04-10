@@ -1,4 +1,3 @@
-# javascript
 # K-digital 3기 FrontEnd 수업
 ## https://wonilkim.github.io/htmlcss/
 + 23.04.10 : Form, Javascript
