@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+    <link rel="stylesheet" type="text/css" href="./05.css">
+
+    <title>Form Test</title>
+</head>
+
+<body>
+    <form>
+        <header></header>
+        <main class="container">
+            <article>
+
+                <label for="txt_name">성명</label>
+                <input type="text" id="txt_name" name="txt_name" placeholder="성명 입력" required>
+
+                <label for="txt_email">Email</label>
+                <input type="email" id="txt_email" name="txt_email" placeholder="Email 입력" required>
+
+                <label for="birth">생년월일</label>
+                <div class="grid" id="birth">
+                    <select id="year" required>
+                        <option value="" selected>년</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                    </select>
+
+                    <select id="month" required>
+                        <option value="" selected>월</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+
+                    <select id="day" required>
+                        <option value="" selected>일</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
+
+                <fieldset>
+                    <legend>성별</legend>
+                    <div class="grid">
+                        <label for="male">
+                            <input type="radio" id="male" name="gender" value="male" checked>
+                            남
+                        </label>
+                        <label for="female">
+                            <input type="radio" id="female" name="gender" value="female">
+                            여
+                        </label>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>사용 언어</legend>
+                    <div class="grid">
+                        <label for="htmlcss">
+                            <input type="checkbox" id="htmlcss" name="htmlcss" value="htmlcss" checked>
+                            HTML/CSS/Javascript
+                        </label>
+                        <label for="react">
+                            <input type="checkbox" id="react" name="react" value="react">
+                            React
+                        </label>
+                        <label for="python">
+                            <input type="checkbox" id="python" name="python" value="python">
+                            Python
+                        </label>
+                        <label for="java">
+                            <input type="checkbox" id="java" name="java" value="java">
+                            Java
+                        </label>
+                    </div>
+                </fieldset>
+
+
+                <input type="submit" value="확인">
+                <input type="reset" value="취소">
+
+                <!-- Button 
+                <button type="submit">확인</button>
+                <button type="reset">취소</button>
+                -->
+            </article>
+        </main>
+    </form>
+</body>
+
+</html>
