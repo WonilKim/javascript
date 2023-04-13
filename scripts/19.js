@@ -62,6 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
             console.log(bt3.textContent);
 
+            //🥕🥒🥑🥦
+
         })
     }
 })
