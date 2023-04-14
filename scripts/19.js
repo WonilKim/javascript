@@ -59,19 +59,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
             switch (bt2.textContent) {
                 case '사과 삭제':
-                    arr.filter((item)=> console.log(item)); // filter 함수는 배열을 순회한다.
-                    arr.filter((item)=> bt1.textContent != '사과');
+                    //arr.filter((item)=> console.log(item)); // filter 함수는 배열을 순회한다.
+                    arr = arr.filter((item)=> item != '🍎');
                     break;
                 case '바나나 삭제':
-                    arr.push('🍌')
+                    arr = arr.filter((item)=> item != '🍌');
                     break;
                 case '오렌지 삭제':
-                    arr.push('🍊')
+                    arr = arr.filter((item)=> item != '🍊');
                     break;
                 case '수박 삭제':
-                    arr.push('🍉')
+                    arr = arr.filter((item)=> item != '🍉');
                     break;
             }
+            console.log("arr.toString() = " + arr.toString());
+            //console.log("arr.join() = " + arr.join());
+            textOutput.value = arr.toString();
 
 
         });
