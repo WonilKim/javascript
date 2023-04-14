@@ -57,23 +57,52 @@ document.addEventListener("DOMContentLoaded", () => {
             // 주어진 함수의 조건을 만족하는 요소를 모아 새로운 배열로 반환
             // arr.filter((item) => 조건식) // item 은 기존 배열의 요소
 
-            switch (bt2.textContent) {
-                case '사과 삭제':
-                    //arr.filter((item)=> console.log(item)); // filter 함수는 배열을 순회한다.
-                    arr = arr.filter((item)=> item != '🍎');
-                    break;
-                case '바나나 삭제':
-                    arr = arr.filter((item)=> item != '🍌');
-                    break;
-                case '오렌지 삭제':
-                    arr = arr.filter((item)=> item != '🍊');
-                    break;
-                case '수박 삭제':
-                    arr = arr.filter((item)=> item != '🍉');
-                    break;
+            //// filter 를 사용하지 않는 방법
+            let gubun = bt2.textContent.replace('삭제', '').replace(' ', '');
+            console.log(gubun);
+
+            let temp = [];
+            for (let item of arr) {
+                switch (gubun) {
+                    case '사과':
+                        if (item != '🍎')
+                            temp.push(item);
+                        break;
+                    case '바나나':
+                        if (item != '🍌')
+                            temp.push(item);
+                        break;
+                    case '오렌지':
+                        if (item != '🍊')
+                            temp.push(item);
+                        break;
+                    case '수박':
+                        if (item != '🍉')
+                            temp.push(item);
+                        break;
+                }
             }
+
+            arr = temp;
+
+            //// filter 를 사용하는 방법
+            // switch (bt2.textContent) {
+            //     case '사과 삭제':
+            //         //arr.filter((item)=> console.log(item)); // filter 함수는 배열을 순회한다.
+            //         arr = arr.filter((item)=> item != '🍎');
+            //         break;
+            //     case '바나나 삭제':
+            //         arr = arr.filter((item)=> item != '🍌');
+            //         break;
+            //     case '오렌지 삭제':
+            //         arr = arr.filter((item)=> item != '🍊');
+            //         break;
+            //     case '수박 삭제':
+            //         arr = arr.filter((item)=> item != '🍉');
+            //         break;
+            // }
+
             console.log("arr.toString() = " + arr.toString());
-            //console.log("arr.join() = " + arr.join());
             textOutput.value = arr.toString();
 
 
@@ -87,6 +116,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // 배열내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환
             // arr.map((item) => 명령 함수)
+
+            let temp = [];
+            for (let item of arr) {
+                let textButton = bt3.textContent.substring(0, bt3.textContent.indexOf(" "));
+                console.log('textButton = ' + textButton);
+                switch (textButton) {
+                    case '사과':
+                        if (item == '🍎')
+                            temp.push('🥕');
+                        else
+                            temp.push(item);
+                        break;
+                    case '바나나':
+                        if (item == '🍌')
+                            temp.push('🥒');
+                        else
+                            temp.push(item);
+                        break;
+                    case '오렌지':
+                        if (item == '🍊')
+                            temp.push('🥑');
+                        else
+                            temp.push(item);
+                        break;
+                    case '수박':
+                        if (item == '🍉')
+                            temp.push('🥦');
+                        else
+                            temp.push(item);
+                        break;
+                }
+            }
+
+            arr = temp;
+
+            console.log("arr.toString() = " + arr.toString());
+            //console.log("arr.join() = " + arr.join());
+            textOutput.value = arr.toString();
 
             //🥕🥒🥑🥦
 
