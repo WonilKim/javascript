@@ -117,39 +117,81 @@ document.addEventListener("DOMContentLoaded", () => {
             // 배열내의 모든 요소 각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환
             // arr.map((item) => 명령 함수)
 
-            let temp = [];
-            for (let item of arr) {
-                let textButton = bt3.textContent.substring(0, bt3.textContent.indexOf(" "));
-                console.log('textButton = ' + textButton);
-                switch (textButton) {
-                    case '사과':
-                        if (item == '🍎')
-                            temp.push('🥕');
-                        else
-                            temp.push(item);
-                        break;
-                    case '바나나':
-                        if (item == '🍌')
-                            temp.push('🥒');
-                        else
-                            temp.push(item);
-                        break;
-                    case '오렌지':
-                        if (item == '🍊')
-                            temp.push('🥑');
-                        else
-                            temp.push(item);
-                        break;
-                    case '수박':
-                        if (item == '🍉')
-                            temp.push('🥦');
-                        else
-                            temp.push(item);
-                        break;
-                }
+            //// map 을 사용하지 않는 방법
+            // let temp = [];
+            // for (let item of arr) {
+            //     let textButton = bt3.textContent.substring(0, bt3.textContent.indexOf(" "));
+            //     console.log('textButton = ' + textButton);
+            //     switch (textButton) {
+            //         case '사과':
+            //             if (item == '🍎')
+            //                 temp.push('🥕');
+            //             else
+            //                 temp.push(item);
+            //             break;
+            //         case '바나나':
+            //             if (item == '🍌')
+            //                 temp.push('🥒');
+            //             else
+            //                 temp.push(item);
+            //             break;
+            //         case '오렌지':
+            //             if (item == '🍊')
+            //                 temp.push('🥑');
+            //             else
+            //                 temp.push(item);
+            //             break;
+            //         case '수박':
+            //             if (item == '🍉')
+            //                 temp.push('🥦');
+            //             else
+            //                 temp.push(item);
+            //             break;
+            //     }
+            // }
+            // arr = temp;
+
+            //// map 를 사용하는 방법
+            // //let textButton = bt3.textContent.substring(0, bt3.textContent.indexOf(" "));
+            // let textButton = bt3.textContent.split('->')[0].trim();
+            // console.log('textButton = ' + textButton);
+            // switch (textButton) {
+            //     case '사과':
+            //         //arr.filter((item)=> console.log(item)); // filter 함수는 배열을 순회한다.
+            //         arr = arr.map((item) => item == '🍎' ? '🥕' : item);
+            //         break;
+            //     case '바나나':
+            //         arr = arr.map((item) => item == '🍌' ? '🥒' : item);
+            //         break;
+            //     case '오렌지':
+            //         arr = arr.map((item) => item == '🍊' ? '🥑' : item);
+            //         break;
+            //     case '수박':
+            //         arr = arr.map((item) => item == '🍉' ? '🥦' : item);
+            //         break;
+            // }
+
+            //// replaceAll 를 사용하는 방법
+            let textButton = bt3.textContent.split('->')[0].trim();
+            console.log('textButton = ' + textButton);
+
+            let temp = arr.join(',');
+            switch (textButton) {
+                case '사과':
+                    temp = temp.replaceAll('🍎', '🥕');
+                    break;
+                case '바나나':
+                    temp = temp.replaceAll('🍌', '🥒');
+                     break;
+                case '오렌지':
+                    temp = temp.replaceAll('🍊', '🥑');
+                    break;
+                case '수박':
+                    temp = temp.replaceAll('🍉', '🥦');
+                    break;
             }
 
-            arr = temp;
+            arr = temp.split(',');
 
             console.log("arr.toString() = " + arr.toString());
             //console.log("arr.join() = " + arr.join());
