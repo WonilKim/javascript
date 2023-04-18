@@ -3,67 +3,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const divs = document.querySelectorAll(".rows > div");
     console.log(divs);
-
-    //랜덤수 생성
-    let r = Math.floor(Math.random() * 9) + 1;
-    console.log(r);
-
-    let count = 0;
-    let bomb = false;
-    let num = 1;
-    let clicked = [];
-    for (let d of divs) {
-        
-        d.innerHTML = num++;
-
-        d.addEventListener("click", () => {
-            console.log("-- div click --");
-
-            count++;
-
-            if(bomb == true) {
-                console.log("폭탄이 터졌습니다. 폭탄을 섞어주세요.");
-                return;
-            }
-
-            if (d.innerHTML == r) {
-                //폭탄
-                console.log("폭탄");
-                d.innerHTML = `<img src=./images/boom.png>`;
-                bomb = true;
-            }
-            else {
-                console.log("하트");
-                d.innerHTML = `<img src=./images/hart.png>`;
-            }
-
-            if(count == 8) {
-                console.log("성공. 모든 폭탄을 피했습니다.");
-                divs[r - 1].innerHTML = `<img src=./images/hart.png>`;
-            }
-
-        });
-        
-    }
-
     const btnMix = document.querySelector("#btnMix");
     console.log(btnMix);
 
-    btnMix.addEventListener("click", () => {
-        console.log("-- btnMix click --");
+    let arr = [0, 0, 0, 0, 0, 0, 0, 0, 1];
+    let flag = true;
+    let cnt = 0;
+    let selarr = [];
 
-        r = Math.floor(Math.random() * 9) + 1;
-        console.log(r);
-        count = 0;
-        bomb = false;
-        num = 1;
-
-        for (let d of divs) {
-            d.innerHTML = num++;
+    btnMix.addEventListener('click', () => {
+        if (flag) {
+            arr = arr.sort(() => Math.random() - 0.5 );
+            //shuffle(arr);
+            console.log(arr);
+            flag = false;
         }
+    })
 
-    });
+    for (let box of divs) {
+        //박스 번호 넣기
+        box.innerHTML = box.getAttribute('id').slice(-1);
+        //box.innerHTML = box.getAttribute('id').replace('d', '');
 
+        box.addEventListener('click', ()=>{
+            let n = parseInt(box.textContent);
+            console.log(n);
 
+            //폭탄 하트 구분
+            if(arr[n-1] == 0) {
+                //하트
+                console.log("하트");
+                box.innerHTML = `<img src=./images/hart.png>`;
 
+            } else{
+                //폭탄
+                console.log("폭탄");
+                box.innerHTML = `<img src=./images/boom.png>`;
+
+            }
+        });
+    }
 });
